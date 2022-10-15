@@ -1,0 +1,14 @@
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\bin\Debug\netcoreapp3.1\GameProject.exe
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\bin\Debug\netcoreapp3.1\GameProject.deps.json
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\bin\Debug\netcoreapp3.1\GameProject.runtimeconfig.json
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\bin\Debug\netcoreapp3.1\GameProject.runtimeconfig.dev.json
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\bin\Debug\netcoreapp3.1\GameProject.dll
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\bin\Debug\netcoreapp3.1\GameProject.pdb
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.csproj.AssemblyReference.cache
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.AssemblyInfoInputs.cache
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.AssemblyInfo.cs
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.csproj.CoreCompileInputs.cache
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.dll
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.pdb
+C:\Users\KARDELEN\source\repos\Kampintro\GameProject\obj\Debug\netcoreapp3.1\GameProject.genruntimeconfig.cache
