@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author KARDELEN
+ *
+ */
+module ınheritance {
+}
