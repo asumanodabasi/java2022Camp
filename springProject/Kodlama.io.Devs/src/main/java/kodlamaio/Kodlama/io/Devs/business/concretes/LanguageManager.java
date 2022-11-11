@@ -1,69 +1,70 @@
 package kodlamaio.Kodlama.io.Devs.business.concretes;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.Kodlama.io.Devs.business.abstracts.LanguageService;
+import kodlamaio.Kodlama.io.Devs.business.requsts.CreateProgramminLanguageRequest;
+import kodlamaio.Kodlama.io.Devs.business.requsts.DeleteProgrammingLanguageRequest;
+import kodlamaio.Kodlama.io.Devs.business.requsts.UpdateProgrammingLanguageRequest;
+import kodlamaio.Kodlama.io.Devs.business.responses.GetAllProgrammingLanguageResponse;
+import kodlamaio.Kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
 import kodlamaio.Kodlama.io.Devs.dataAccess.abstracts.LanguageRepository;
 import kodlamaio.Kodlama.io.Devs.entities.concrete.ProgrammingLanguage;
 
 @Service
 public class LanguageManager implements LanguageService {
-	private LanguageRepository lgrep;
-	List<ProgrammingLanguage> languages;
-
-	public LanguageManager(LanguageRepository _lgrep) {
-		super();
-		this.lgrep = _lgrep;
+	private LanguageRepository languageRepository;
+	
+	@Autowired
+	public LanguageManager(LanguageRepository languageRepository) {
+		this.languageRepository = languageRepository;
 	}
 
 	@Override
-	public List<ProgrammingLanguage> getAll() {
-		
-		return lgrep.getAll();
-	}
-
-	@Override
-	public void add(ProgrammingLanguage language) {
-		if(lgrep.equals(language.getName()))
-		{
-			System.out.println("Name is not equals");
-		}
-		else if(language.getName().isEmpty())
-		{
-			System.out.println("Name is not empty!");
-		}
-		else
-		{
-			lgrep.add(language);
+	public List<GetAllProgrammingLanguageResponse> getAll() {
+		List<ProgrammingLanguage> languages=languageRepository.findAll();
+		List<GetAllProgrammingLanguageResponse> allProgrammingLanguageResponses=new ArrayList<GetAllProgrammingLanguageResponse>();
+		for(ProgrammingLanguage lang:languages) {
+			GetAllProgrammingLanguageResponse response=new GetAllProgrammingLanguageResponse();
+			response.setName(lang.getName());
+			response.setId(lang.getId());
+			allProgrammingLanguageResponses.add(response);
 		}
 		
+		
+		return allProgrammingLanguageResponses;
 	}
 
 	@Override
-	public void delete(int id ) {
-		lgrep.delete(id);
+	public void add(CreateProgramminLanguageRequest createProgramminLanguageRequest) throws Exception{
+		ProgrammingLanguage language=new ProgrammingLanguage();
+		if(createProgramminLanguageRequest.getName()==null ||createProgramminLanguageRequest.getName()=="") {
+			throw new Exception("name cannot be empty");
+		}
+		language.setName(createProgramminLanguageRequest.getName().toUpperCase());
+		this.languageRepository.save(language);
 		
 	}
 
 	@Override
-	public void update(ProgrammingLanguage language) {
-		
-		lgrep.update(language);
+	public void delete(DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest) {
+		ProgrammingLanguage language=new ProgrammingLanguage();
+		language.setId(deleteProgrammingLanguageRequest.getId());
+		this.languageRepository.delete(language);
 	}
 
 	@Override
-	public ProgrammingLanguage getById(ProgrammingLanguage language) {
-		for(ProgrammingLanguage pl :languages)
-		{
-			if(pl.getId()==language.getId())
-			{
-				System.out.println("Language get by id");
-				 lgrep.getById(language);
-			}
-		}
-		return null;
+	public void update(UpdateProgrammingLanguageRequest updateProgramminLanguageRequest) {
+		ProgrammingLanguage language=new ProgrammingLanguage();
+		language.setId(updateProgramminLanguageRequest.getId());
+		language.setName(updateProgramminLanguageRequest.getName().toUpperCase());
+		this.languageRepository.save(language);
 	}
+
+	
 
 }

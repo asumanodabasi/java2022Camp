@@ -1,39 +1,36 @@
 package kodlamaio.Kodlama.io.Devs.entities.concrete;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name="languages")
+@Table(name="subTechnology")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ProgrammingLanguage {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
-	
-	@Column(name="name")
-	private String name;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="language")
-	private List<SubTechnology> technologies;
+public class SubTechnology {
 
+	@Id
+	@Column(name="subTecId")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int subTecId;
+	
+	@Column(name="subTecName")
+	private String subTecName;
+	
+	@ManyToOne()
+	@JoinColumn(name="languages_id")
+	private ProgrammingLanguage language;
 }

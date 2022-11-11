@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.Kodlama.io.Devs.business.abstracts.LanguageService;
+import kodlamaio.Kodlama.io.Devs.business.requsts.CreateProgramminLanguageRequest;
+import kodlamaio.Kodlama.io.Devs.business.requsts.DeleteProgrammingLanguageRequest;
+import kodlamaio.Kodlama.io.Devs.business.requsts.UpdateProgrammingLanguageRequest;
+import kodlamaio.Kodlama.io.Devs.business.responses.GetAllProgrammingLanguageResponse;
+import kodlamaio.Kodlama.io.Devs.business.responses.GetByIdProgrammingLanguageResponse;
 import kodlamaio.Kodlama.io.Devs.entities.concrete.ProgrammingLanguage;
 
 @RestController
@@ -22,38 +27,33 @@ public class ProgrammingLanguageControllers {
 
 	@Autowired
 	public ProgrammingLanguageControllers(LanguageService languageService) {
-		super();
 		this.languageService = languageService;
 	}
 	
-	@GetMapping ("/getall")
-	public List<ProgrammingLanguage> getAll()
+	@GetMapping ("/getall") 
+	public List<GetAllProgrammingLanguageResponse> getAll()
 	{
 		return languageService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public void add(@RequestBody ProgrammingLanguage language)
+	public void add(@RequestBody CreateProgramminLanguageRequest createProgramminLanguageRequest) throws Exception
 	{
-	languageService.add(language);	
+	this.languageService.add(createProgramminLanguageRequest);
 	}
 	
 	@DeleteMapping("/delete")
-	public void delete(@RequestBody ProgrammingLanguage language)
+	public void delete(@RequestBody DeleteProgrammingLanguageRequest deleteProgrammingLanguageRequest)
 	{
-		languageService.delete(1);
+		this.languageService.delete(deleteProgrammingLanguageRequest);
 	}
 	
 	@PutMapping("/update")
-	public void update(@RequestBody ProgrammingLanguage language)
+	public void update(@RequestBody UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest)
 	{
-		languageService.update(language);
+		this.languageService.update(updateProgrammingLanguageRequest);
 	}
 		
-	@GetMapping("/getbyid")
-	public void getById(@RequestBody ProgrammingLanguage language)
-	{
-		languageService.getById(language);
-	}
+	
 	
 }
